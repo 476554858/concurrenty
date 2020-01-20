@@ -9,6 +9,8 @@ import java.util.concurrent.Executors;
 public class MyThreadPoolDemo {
 
     public static void main(String[] args) {
+//        System.out.println(Runtime.getRuntime().availableProcessors());
+
         //ExecutorService threadPool = Executors.newFixedThreadPool(5);
         //ExecutorService threadPool = Executors.newSingleThreadExecutor();
         ExecutorService threadPool = Executors.newCachedThreadPool();
