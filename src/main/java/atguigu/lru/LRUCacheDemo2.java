@@ -1,4 +1,4 @@
-package atguigu.locksupport;
+package atguigu.lru;
 
 import java.util.HashMap;
 import java.util.Map;
