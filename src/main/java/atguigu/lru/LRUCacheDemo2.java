@@ -1,5 +1,6 @@
 package atguigu.lru;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -113,6 +114,8 @@ public class LRUCacheDemo2 {
 
         DoubleLinkedList<Integer, Integer> doubleLinkedList = lruCacheDemo.doubleLinkedList;
         System.out.println(doubleLinkedList.head.next.key);
+        ArrayList<String> strings = new ArrayList<String>();
+        strings.add("");
     }
 
 

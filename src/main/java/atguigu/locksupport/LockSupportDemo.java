@@ -13,29 +13,32 @@ public class LockSupportDemo {
     static Condition condition = lock.newCondition();
 
     public static void main(String[] args) {
-         final Thread a = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    TimeUnit.SECONDS.sleep(3);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-                System.out.println(Thread.currentThread().getName() + "---come in" + System.currentTimeMillis());
-                LockSupport.park();//被阻塞，需要许可证
-                System.out.println(Thread.currentThread().getName() + "--被唤醒" + System.currentTimeMillis());
-            }
-        }, "a");
-         a.start();
+        loclSupport();
+    }
+
+    private static void loclSupport() {
+        final Thread a = new Thread(new Runnable() {
+           @Override
+           public void run() {
+               try {
+                   TimeUnit.SECONDS.sleep(3);
+               } catch (InterruptedException e) {
+                   e.printStackTrace();
+               }
+               System.out.println(Thread.currentThread().getName() + "---come in" + System.currentTimeMillis());
+               LockSupport.park();//被阻塞，需要许可证
+               System.out.println(Thread.currentThread().getName() + "--被唤醒" + System.currentTimeMillis());
+           }
+       }, "a");
+        a.start();
 
         new Thread(new Runnable() {
             @Override
             public void run() {
-                LockSupport.unpark(a);//被阻塞，需要许可证
+                LockSupport.unpark(a);//被阻塞，需要许可证(可以在阻塞之前执行)
                 System.out.println(Thread.currentThread().getName() + "--通知了");
             }
         }, "b").start();
-
     }
 
     private static void lockAwaitSignal() {
